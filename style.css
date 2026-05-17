@@ -180,13 +180,14 @@ button {
 }
 
 .audio-widget {
+  --audio-shift: 206px;
   position: fixed;
   right: 1rem;
   bottom: 1.25rem;
   z-index: 30;
   display: flex;
   align-items: center;
-  gap: .65rem;
+  justify-content: flex-end;
 }
 
 .audio-fab {
@@ -197,6 +198,10 @@ button {
   color: #fff;
   box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
   padding: 0;
+  position: relative;
+  z-index: 2;
+  transform: translateX(0);
+  transition: transform .38s ease;
 }
 
 .audio-panel {
@@ -208,23 +213,23 @@ button {
   background: rgba(14, 10, 10, 0.76);
   border: 1px solid rgba(255,255,255,.2);
   backdrop-filter: blur(10px);
-  animation: fadeUp .35s ease both;
+  margin-right: -44px;
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transform: translateX(14px);
+  transition: max-width .42s ease, opacity .28s ease, transform .38s ease, margin-right .38s ease;
 }
 
-#audioWidget input[type="range"] {
-  width: 110px;
-  accent-color: var(--accent);
+.audio-widget.is-open .audio-fab {
+  transform: translateX(calc(var(--audio-shift) * -1));
 }
 
-.mute-btn {
-  background: rgba(255,255,255,.14);
-  color: var(--text);
-  padding: .5rem .85rem;
-  font-size: .78rem;
-}
-
-.mute-btn.is-muted {
-  background: rgba(184, 109, 90, .35);
+.audio-widget.is-open .audio-panel {
+  max-width: 240px;
+  opacity: 1;
+  margin-right: .5rem;
+  transform: translateX(0);
 }
 
 .sr-only {
@@ -263,5 +268,6 @@ button {
 @media (min-width: 768px) {
   .experience { padding: 2rem; }
   .welcome-screen { padding: 2.7rem; }
+  .audio-widget { --audio-shift: 256px; }
   #audioWidget input[type="range"] { width: 160px; }
 }

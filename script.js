@@ -2,6 +2,7 @@ const enterBtn = document.getElementById("enterBtn");
 const welcome = document.getElementById("welcomeScreen");
 const content = document.getElementById("mainContent");
 
+const audioWidget = document.getElementById("audioWidget");
 const audioFab = document.getElementById("audioFab");
 const audioPanel = document.getElementById("audioPanel");
 const volumeControl = document.getElementById("volumeControl");
@@ -37,9 +38,9 @@ enterBtn.addEventListener("click", async () => {
 });
 
 audioFab.addEventListener("click", () => {
-  const isHidden = audioPanel.classList.contains("hidden");
-  audioPanel.classList.toggle("hidden");
-  audioFab.setAttribute("aria-expanded", String(isHidden));
+  const willOpen = !audioWidget.classList.contains("is-open");
+  audioWidget.classList.toggle("is-open", willOpen);
+  audioFab.setAttribute("aria-expanded", String(willOpen));
 });
 
 volumeControl.addEventListener("input", () => {
