@@ -37,11 +37,20 @@ enterBtn.addEventListener("click", async () => {
   }
 });
 
-audioFab.addEventListener("click", () => {
+audioFab.addEventListener("click", (event) => {
+  event.stopPropagation();
   const willOpen = !audioWidget.classList.contains("is-open");
   audioWidget.classList.toggle("is-open", willOpen);
   audioFab.setAttribute("aria-expanded", String(willOpen));
 });
+
+document.addEventListener("click", (event) => {
+  if (!audioWidget.contains(event.target)) {
+    audioWidget.classList.remove("is-open");
+    audioFab.setAttribute("aria-expanded", "false");
+  }
+});
+
 
 volumeControl.addEventListener("input", () => {
   const volume = Number(volumeControl.value);
