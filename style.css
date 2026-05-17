@@ -109,12 +109,6 @@ button {
   margin-bottom: .75rem;
 }
 
-.btn-audio {
-  background: rgba(255,255,255,.08);
-  color: var(--text);
-  width: 100%;
-}
-
 .hidden { display: none; }
 
 .content {
@@ -185,6 +179,66 @@ button {
   color: #f8e8de;
 }
 
+.audio-widget {
+  position: fixed;
+  right: 1rem;
+  bottom: 1.25rem;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+}
+
+.audio-fab {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(150deg, rgba(227, 154, 124, .96), rgba(184, 109, 90, .92));
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+  padding: 0;
+}
+
+.audio-panel {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .55rem .6rem;
+  border-radius: 999px;
+  background: rgba(14, 10, 10, 0.76);
+  border: 1px solid rgba(255,255,255,.2);
+  backdrop-filter: blur(10px);
+  animation: fadeUp .35s ease both;
+}
+
+#audioWidget input[type="range"] {
+  width: 110px;
+  accent-color: var(--accent);
+}
+
+.mute-btn {
+  background: rgba(255,255,255,.14);
+  color: var(--text);
+  padding: .5rem .85rem;
+  font-size: .78rem;
+}
+
+.mute-btn.is-muted {
+  background: rgba(184, 109, 90, .35);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -209,4 +263,5 @@ button {
 @media (min-width: 768px) {
   .experience { padding: 2rem; }
   .welcome-screen { padding: 2.7rem; }
+  #audioWidget input[type="range"] { width: 160px; }
 }

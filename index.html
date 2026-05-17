@@ -20,7 +20,6 @@
       <h1>Para <span class="config-name">Tu Persona Especial</span></h1>
       <p class="welcome-text">Acerca tu corazón. Este regalo guarda recuerdos, palabras y momentos diseñados para emocionar.</p>
       <button class="btn-enter" id="enterBtn">Entrar a nuestra historia</button>
-      <button class="btn-audio" id="audioToggle" aria-pressed="false">🎵 Activar música</button>
     </section>
 
     <section class="content hidden" id="mainContent">
@@ -58,6 +57,15 @@
       </section>
     </section>
   </main>
+
+  <div class="audio-widget" id="audioWidget">
+    <button class="audio-fab" id="audioFab" aria-label="Abrir controles de música" aria-expanded="false">🎵</button>
+    <div class="audio-panel hidden" id="audioPanel">
+      <label for="volumeControl" class="sr-only">Volumen</label>
+      <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.6" aria-label="Control de volumen" />
+      <button id="muteToggle" class="mute-btn" aria-pressed="false">Silenciar</button>
+    </div>
+  </div>
 
   <audio id="bgMusic" loop preload="none" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6f6f4507f7.mp3?filename=romantic-piano-113274.mp3"></audio>
 
